@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     # Verificar versão do Newman e Node.js
     - name: Check version Newman and Node
@@ -31,14 +31,14 @@ jobs:
     - name: Execute collection
       run: |
       
-        newman run Supernatural/Users-Login/Auth.json -e Supernatural/Users-Login/Supernatural_QA-env.json  --reporters cli,htmlextra --reporter-htmlextra-export Supernatural/Users-Login/docs/index.html
+       newman run Supernatural/Users-Login/Auth.json -e Supernatural/Users-Login/Supernatural_QA-env.json  --reporters cli,htmlextra --reporter-htmlextra-export Supernatural/Users-Login/docs/index.html
 
 
 
     # Carregar relatório de teste
     - name: Upload Test Report
       if: ${{ success() }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: test-report
         path: Supernatural/Users-Login/docs/index.html
